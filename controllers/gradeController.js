@@ -68,7 +68,9 @@ const update = async (req, res) => {
     const id = req.params.id;
 
     try {
-        const data = await Student.findByIdAndUpdate({ _id: id }, req.body);
+        const data = await Student.findByIdAndUpdate({ _id: id }, req.body, {
+            new: true,
+        });
         if (!data) {
             res.send(`Grade id ${id} não encontrada`);
         } else {
@@ -103,13 +105,16 @@ const remove = async (req, res) => {
 };
 
 const removeAll = async (req, res) => {
-    const id = req.params.id;
-
     try {
-        const data = await Student.remove({});
-        res.send({
-            message: `Grades excluidos`,
-        });
+        const data = await Student.deleteMany();
+        if (!data) {
+            res.send(`Nenhuma grade encontrada`);
+        } else {
+            res.send({
+                message: `Grades excluidos`,
+            });
+        }
+
         logger.info(`DELETE /grade`);
     } catch (error) {
         res.status(500).send({ message: "Erro ao excluir todos as Grades" });

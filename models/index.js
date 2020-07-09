@@ -3,7 +3,7 @@ import studentModel from "./studentModel.js";
 
 const db = {};
 db.mongoose = mongoose;
-db.url = process.env.MONGOURL;
+db.url = process.env.MONGODB;
 db.student = studentModel(mongoose);
 
 export { db };
