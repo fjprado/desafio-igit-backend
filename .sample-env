@@ -1,0 +1,1 @@
+MONGODB=mongodb+srv://deploy:uploaddeploy@3bcluster-phtez.mongodb.net/3Bank?retryWrites=true&w=majority
