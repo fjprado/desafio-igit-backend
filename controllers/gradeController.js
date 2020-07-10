@@ -14,9 +14,7 @@ const create = async (req, res) => {
         lastModified: lastModified,
     });
     try {
-        const data = await Student.save(student);
-        console.log(student);
-        console.log(data);
+        const data = await student.save(student);
         res.send(data);
         logger.info(`POST /grade - ${JSON.stringify()}`);
     } catch (error) {
